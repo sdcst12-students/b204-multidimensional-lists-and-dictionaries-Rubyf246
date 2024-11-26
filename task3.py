@@ -58,10 +58,47 @@ The flame that burns at the tip of its tail is an indication of its emotions.
 The flame wavers when Charmander is enjoying itself. 
 If the Pokémon becomes enraged, the flame burns fiercely.
 
+
+pokemon = [ #pokemon is a list of nested dictionaries
+  {
+    "id": 1,
+    "name": {
+      "english": "Bulbasaur",
+      "japanese": "フシギダネ",
+      "chinese": "妙蛙种子",
+      "french": "Bulbizarre"
+    },
+    "type": ["Grass", "Poison"],
+    "base": {
+      "HP": 45,
+      "Attack": 49,
+      "Defense": 49,
+      "Sp. Attack": 65,
+      "Sp. Defense": 65,
+      "Speed": 45
+    },
+    "species": "Seed Pokémon",
+    "description": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger.",
+    "evolution": { "next": [["2", "Level 16"]] },
+    "profile": {
+      "height": "0.7 m",
+      "weight": "6.9 kg",
+      "egg": ["Monster", "Grass"],
+      "ability": [
+        ["Overgrow", "false"],
+        ["Chlorophyll", "true"]
+      ],
+      "gender": "87.5:12.5"
+    },
+    "image": {
+      "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/001.png",
+      "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/001.png",
+      "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/001.png"
+    }
+  }
+  ]
+
 """
-
-
-
 
 pokemon = [
   {
@@ -31847,3 +31884,136 @@ pokemon = [
   }
 ]
 
+
+pokemon_a = [ # a nested dictionary
+    {
+      "id": 1,
+      "name": {
+        "english": "Bulbasaur",
+        "japanese": "フシギダネ",
+        "chinese": "妙蛙种子",
+        "french": "Bulbizarre"
+      },
+      "type": ["Grass", "Poison"],
+      "base": {
+        "HP": 45,
+        "Attack": 49,
+        "Defense": 49,
+        "Sp. Attack": 65,
+        "Sp. Defense": 65,
+        "Speed": 45
+      },
+      "species": "Seed Pokémon",
+      "description": "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger.",
+      "evolution": { "next": [["2", "Level 16"]] },
+      "profile": {
+        "height": "0.7 m",
+        "weight": "6.9 kg",
+        "egg": ["Monster", "Grass"],
+        "ability": [
+          ["Overgrow", "false"],
+          ["Chlorophyll", "true"]
+        ],
+        "gender": "87.5:12.5"
+      },
+      "image": {
+        "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/001.png",
+        "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/001.png",
+        "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/001.png"
+      }
+    },
+    {
+      "id": 3,
+      "name": {
+        "english": "Venusaur",
+        "japanese": "フシギバナ",
+        "chinese": "妙蛙花",
+        "french": "Florizarre"
+      },
+      "type": ["Grass", "Poison"],
+      "base": {
+        "HP": 80,
+        "Attack": 82,
+        "Defense": 83,
+        "Sp. Attack": 100,
+        "Sp. Defense": 100,
+        "Speed": 80
+      },
+      "species": "Seed Pokémon",
+      "description": "There is a large flower on Venusaur’s back. The flower is said to take on vivid colors if it gets plenty of nutrition and sunlight. The flower’s aroma soothes the emotions of people.",
+      "evolution": { "prev": ["2", "Level 32"] },
+      "profile": {
+        "height": "2 m",
+        "weight": "100 kg",
+        "egg": ["Monster", "Grass"],
+        "ability": [
+          ["Overgrow", "false"],
+          ["Chlorophyll", "true"]
+        ],
+        "gender": "87.5:12.5"
+      },
+      "image": {
+        "sprite": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/sprites/003.png",
+        "thumbnail": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/thumbnails/003.png",
+        "hires": "https://raw.githubusercontent.com/Purukitto/pokemon-data.json/master/images/pokedex/hires/003.png"
+      }
+    }
+  ]
+
+
+
+print ("Choose a pokemon by \n 1. ID\n 2. English Name")
+choice = int(input("Choice: "))
+
+if choice == 1:
+  input_id= input("Enter the ID of your pokemon: ")
+elif choice == 2:
+  input_engname = input("Enter the English name of your pokemon:")
+else:
+  print ('Please only choose 1 or 2') 
+  
+found = 0
+if choice == 1:
+    id = int(input_id)
+    for my_pokemon in pokemon: 
+        id = my_pokemon['id']
+        if (str(id) == input_id):
+          name = my_pokemon['name']['english']
+          type_str = ''
+          for type in my_pokemon['type']: 
+              type_str = type_str + ', ' + type
+          print (name, '! I CHOOSE YOU!')
+          print (name, 'is a', type_str[2:None], 'type Pokemon')
+          print (name, 'has the following stats:')
+          for key in my_pokemon['base']:
+              print(f"{key} : {my_pokemon['base'][key]}")
+          descr = my_pokemon['description']   
+          print ('Description:')
+          print (descr)
+          found = 1
+          break
+    if (found ==0 ):
+        print ("I'm sorry, I can't find the id of the Pokemon . ")
+ 
+if choice == 2:
+    for my_pokemon in pokemon: 
+        name = my_pokemon['name']['english']
+        if (name == input_engname):
+          type_str = ''
+          for type in my_pokemon['type']: 
+              type_str = type_str + ', ' + type
+          print (name, '! I CHOOSE YOU!')
+          print (name, 'is a', type_str[2:None], 'type Pokemon')
+          print (name, 'has the following stats:')
+          for key in my_pokemon['base']:
+              print(f"{key} : {my_pokemon['base'][key]}")
+          descr = my_pokemon['description']   
+          print ('Description:')
+          print (descr)
+          found = 1
+          break
+    if (found ==0 ):
+        print ("I'm sorry, I can't find the name of the Pokemon:", input_engname, " . ")    
+
+ 
+ 

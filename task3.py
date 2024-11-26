@@ -31885,7 +31885,7 @@ pokemon = [
 ]
 
 
-pokemon_a = [ # a nested dictionary
+pokemon_a = [ # a list of nested dictionaries
     {
       "id": 1,
       "name": {
@@ -31894,7 +31894,7 @@ pokemon_a = [ # a nested dictionary
         "chinese": "妙蛙种子",
         "french": "Bulbizarre"
       },
-      "type": ["Grass", "Poison"],
+      "type": ["Grass", "Poison"], #value is a list
       "base": {
         "HP": 45,
         "Attack": 49,
@@ -31980,7 +31980,7 @@ if choice == 1:
         if (str(id) == input_id):
           name = my_pokemon['name']['english']
           type_str = ''
-          for type in my_pokemon['type']: 
+          for type in my_pokemon['type']:  #type is a list
               type_str = type_str + ', ' + type
           print (name, '! I CHOOSE YOU!')
           print (name, 'is a', type_str[2:None], 'type Pokemon')
